@@ -1,15 +1,58 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { Button, Modal } from 'antd';
 import { SearchOutlined } from '@ant-design/icons';
 import { UserOutlined } from '@ant-design/icons';
 import { BellOutlined } from '@ant-design/icons';
 import { PlusCircleOutlined } from '@ant-design/icons';
 import { Link } from 'react-router-dom';
+import { Tabs } from 'antd';
 import Login from "../../Login";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faRightToBracket, faUserPlus } from '@fortawesome/free-solid-svg-icons';
+import Register from "../../Register"
 import './Heade.css';
 
 
+const items = [
+    {
+      key: '1',
+      label: (
+        <span>
+          <FontAwesomeIcon icon={faRightToBracket} style={{marginRight: '8px'}} />
+          Login
+        </span>
+      ),
+      children: <Login/>,
+    },
+    {
+      key: '2',
+      label: (
+        <span>
+          <FontAwesomeIcon icon={faUserPlus}  style={{marginRight: '8px'}} />
+          Register
+        </span>
+      ),
+      children: <Register/>,
+    },
+  ];
+
 const logo = require('../../../asset/img/Logo.png');
 export default function Header() {
+
+    //bật login form and register form
+    const [isModalOpen, setIsModalOpen] = useState(false);
+
+    const showModal = () => {
+        setIsModalOpen(true);
+    };
+
+    const handleOk = () => {
+        setIsModalOpen(false);
+    };
+
+    const handleCancel = () => {
+        setIsModalOpen(false);
+    };
     return (
 
         <nav className=" bg-white  border-gray-200 dark:bg-gray-900 " >
@@ -24,42 +67,46 @@ export default function Header() {
                         <text className="text-xs">Search...</text>
                     </button>
                     <div className="hidden w-full md:block md:w-auto mr-5  " id="navbar-default">
-                        <ul className=" font-medium flex flex-col p-4 md:p-0 border items-center border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+                        <ul className=" font-medium flex flex-col p-4 md:p-0 border items-center border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-white">
                             <li>
                                 {/* <a href="#" className=" block text-xs py-2 pl-3 pr-4 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white md:dark:text-blue-500" aria-current="page">Trang chủ</a> */}
                                 <Link to="/">
-                                    <span className="ml-3 block text-xs py-2 pl-3 pr-4 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white md:dark:text-blue-500">
+                                    <span className="ml-3 block text-xs py-2 pl-3 pr-4 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 md:dark:text-blue-500">
                                         Trang chủ
                                     </span>
                                 </Link>
                             </li>
                             <li>
-                                <a href="#" className="block text-xs py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Chung cư</a>
+                                <a href="#" className="block text-xs py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Chung cư</a>
                             </li>
                             <li>
-                                <a href="#" className="block text-xs py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Phòng trọ</a>
+                                <a href="#" className="block text-xs py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Phòng trọ</a>
                             </li>
                             <li>
-                                <a href="#" className="block text-xs py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Nhà nguyên căn</a>
+                                <a href="#" className="block text-xs py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Nhà nguyên căn</a>
                             </li>
                             <li>
-                                <a href="#" className="block text-xs py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Ở ghép</a>
+                                <a href="#" className="block text-xs py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Ở ghép</a>
                             </li>
                             <li className='border-x' style={{ padding: "28px" }}>
-                                {/* <a href="#" className="mt-0 text-xs flex items-center pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">
+
+                                <Button type="primary" onClick={showModal} className="mt-0 text-xs flex items-center pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">
                                     <UserOutlined />
                                     <span className="ml-3">
                                         Sign in
                                     </span>
-                                </a> */}
-                                <Link to="/login">
-                                    <span className="mt-0 text-xs flex items-center pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">
-                                        <UserOutlined />
-                                        <span className="ml-3">
-                                            Sign in
-                                        </span>
-                                    </span>
-                                </Link>
+                                </Button>
+                                <Modal open={isModalOpen} centered onCancel={handleCancel}  width={500} footer={null} >
+                                    <div className="logo-form">
+                                        <img src={logo} className="h-20" />
+                                    </div>
+                                    <div className='title-logo' style={{marginBottom: "10px;"}}>
+                                        <h3>Welcome back 👋</h3>
+                                    </div>
+                                    <div className='content-body'>
+                                    <Tabs defaultActiveKey="1" items={items} />
+                                    </div>
+                                </Modal>
                             </li>
                             <li className="pl-0 pr-7 flex p-7 border-r items-center relative" id='boder'>
                                 <BellOutlined />

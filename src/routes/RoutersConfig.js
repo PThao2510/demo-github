@@ -2,7 +2,7 @@ import React from 'react';
 import { Route, Routes } from "react-router-dom";
 import Home from "../components/Pages/Home";
 import ProductDetail from "../components/Pages/product-detail";
-import AddListing from '../components/AddNew/AddListing';
+import AddListing from '../components/AddListing';
 
 
 function RoutersConfig() {

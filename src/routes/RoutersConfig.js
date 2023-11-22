@@ -2,6 +2,8 @@ import React from 'react';
 import { Route, Routes } from "react-router-dom";
 import Home from "../components/Pages/Home";
 import ProductDetail from "../components/Pages/product-detail";
+import AddListing from '../components/AddNew/AddListing';
+
 
 function RoutersConfig() {
     return (
@@ -9,6 +11,10 @@ function RoutersConfig() {
             <Route
                 path='/:product/:id'
                 element={<ProductDetail/>}
+            />
+            <Route
+                path="/addlisting"
+                element={<AddListing />}
             />
             <Route
                 exact

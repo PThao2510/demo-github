@@ -1,16 +1,14 @@
 import React from 'react';
 import { Route, Routes } from "react-router-dom";
 import Home from "../components/Pages/Home";
-import ItemProduct from "../components/Pages/Item-product";
-
-import Login from "../components/Login";
+import ProductDetail from "../components/Pages/product-detail";
 
 function RoutersConfig() {
     return (
         <Routes>
             <Route
-                path='/login'
-                element={<Login />}
+                path='/:product/:id'
+                element={<ProductDetail/>}
             />
             <Route
                 exact

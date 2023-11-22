@@ -9,14 +9,18 @@ import { faBed } from '@fortawesome/free-solid-svg-icons';
 import { faBath } from '@fortawesome/free-solid-svg-icons';
 import { faCube } from '@fortawesome/free-solid-svg-icons';
 import { faCamera } from '@fortawesome/free-solid-svg-icons';
-import {HeartOutlined } from '@ant-design/icons'
 import './item-product.css'
+import { Link } from "react-router-dom";
+
 
 const product = require('../../../asset/img/Product/Forsale.jpg');
 const custom1 = require('../../../asset/img/custom/custom1.jpg')
-export default function ItemProduct() {
+export default function ItemProduct(props) {
+    const item = props.item;
+    const link = '/product/1';
     return (
-        <div className='grid-item'>
+        <Link to={link}>
+            <div className='grid-item'>
             <div className='for-sale'>
                 <div className='listing-item'>
                     <article className='fl-wrap'>
@@ -80,5 +84,6 @@ export default function ItemProduct() {
                 </div>
             </div>
         </div>
+        </Link>
     );
 }

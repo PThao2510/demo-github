@@ -5,16 +5,14 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart } from '@fortawesome/free-regular-svg-icons';
 import { faShuffle } from '@fortawesome/free-solid-svg-icons';
 import { faLocationDot } from '@fortawesome/free-solid-svg-icons';
-import { faBed } from '@fortawesome/free-solid-svg-icons';
-import { faBath } from '@fortawesome/free-solid-svg-icons';
-import { faCube } from '@fortawesome/free-solid-svg-icons';
-import { faCamera } from '@fortawesome/free-solid-svg-icons';
+import { faBed, faBath,faCube, faCamera} from '@fortawesome/free-solid-svg-icons';
 import './item-product.css'
 import { Link } from "react-router-dom";
 
 
 const product = require('../../../asset/img/Product/Forsale.jpg');
 const custom1 = require('../../../asset/img/custom/custom1.jpg')
+
 export default function ItemProduct(props) {
     const item = props.item;
     const link = '/product/1';

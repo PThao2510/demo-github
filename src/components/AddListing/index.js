@@ -3,8 +3,8 @@ import { faUserPen, faTableList, faFileCirclePlus, faPowerOff } from '@fortaweso
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Tabs } from 'antd';
 import "./addlisting.css"
-import Register from "../Register";
 import AddNew from "./AddNew";
+import ListWrite from './ListWrite';
 
 
 const items = [
@@ -26,7 +26,7 @@ const items = [
         Danh sách bài viết
       </span>
     ),
-    children: "<Register />",
+    children: <ListWrite/>,
   },
   {
     key: '3',
@@ -157,6 +157,7 @@ export default function AddListing() {
 
     <div className='dashboard-menu'>
       <Tabs tabAddlisting tabPosition='left' defaultActiveKey="1" items={items} />
+      {/* <div className='dashboard-menu-footer'>© CLEANHOME 2022 . ALL RIGHTS RESERVED.</div> */}
     </div>
   );
 }

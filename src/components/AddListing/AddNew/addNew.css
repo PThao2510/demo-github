@@ -1,4 +1,6 @@
 .dashboard-container{
+    /* margin-left: 350px; */
+    /* width: 1000px; */
     margin: 0px 80px 0px  80px;
     font-size: 13px;
 }
@@ -41,6 +43,7 @@
 }
 
 .custom-form {
+    
     padding: 20px 30px;
     color: #878c9f;
 }
@@ -56,6 +59,33 @@
     background-color: #F5F7FB;   
 }
 .input-style:focus{
-    border: 1px solid #FFF;
-    background-color: #fff;
+    /* border: 1px solid #FFF;
+    background-color: #fff; */
+    color: #000;
+}
+
+/* Chi tiết căn Phòng */
+/* upload immages */
+.fuzone{
+    position: relative;
+    border: 2px dashed #3270fc;
+    border-radius: 3px;
+    background: #F7F9FB;
+    transition: all 0.3s linear;
+    margin-bottom: 10px;
+    display: inline-block;
+    width: 100%;
+    min-height: 310px;
+    margin-top: 0px;
+    cursor: pointer;
+}
+
+.fuzone .fu-text{
+    
+    text-align: center;
+    margin: 50px 0;
+    font-size: 14px;
+    color: #999;
+    font-weight: 400;
+    position: relative;
 }

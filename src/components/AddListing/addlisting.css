@@ -13,6 +13,7 @@
     background-color: #fff;
     width: 300px;
     padding-top: 40px;
+    /* position: fixed; */
 }
 
 .dashboard-menu .ant-tabs .ant-tabs-content-holder {
@@ -63,6 +64,8 @@
     font-weight: 650;
     padding: 20px 20px 20px 20px;
     border-top: 1px solid #eee;
+    width: 300px;
+    z-index: 100;
 }
 
 /* Container */

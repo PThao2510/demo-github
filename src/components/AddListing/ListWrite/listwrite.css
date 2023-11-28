@@ -37,9 +37,12 @@
     border-radius: 5px;
 }
 /* Danh sách bài viết */
-.new-item-img{
-    width: 100%;
-    background-color: url(/src/asset/img/Product/Forsale.jpg);
+
+
+.item-img{
+    max-height: 152px;
+    border-bottom-left-radius: 8px;
+    border-top-left-radius: 8px;
 }
 
 .rate {

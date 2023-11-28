@@ -1,6 +1,6 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { Col, Row, Tabs } from 'antd';
+import { Col, Row, Card  } from 'antd';
 import { Rate } from 'antd'
 import { faPowerOff, faMagnifyingGlass, faLocationDot, faTrashCan } from '@fortawesome/free-solid-svg-icons';
 
@@ -37,10 +37,15 @@ export default function ListWrite() {
                         <div>
                             <div className='list-items'>
                                 <Row gutter={16}>
-                                    <Col>
-                                        <div className='new-item'>
-                                            <div className='new-item-img'></div>
-                                            <div className='new-item-content'>
+                                    <Col className="gutter-row" span={12}>
+                                        <div className='new-item flex'>
+                                            <div className='new-item-img'>
+                                                <img src={custom1} alt="" className='item-img'></img>
+                                            </div>
+                                            <Card
+                                                bordered={false}
+                                            >
+                                                <div className='new-item-content'>
                                                 <h4 className='font-semibold text-xl'>Gorgeous House For Sale</h4>
                                                 <div>
                                                     <FontAwesomeIcon icon={faLocationDot} className='text-blue-500' />
@@ -51,6 +56,31 @@ export default function ListWrite() {
                                                     <FontAwesomeIcon icon={faTrashCan} className='icon-delete text-blue-500' />
                                                 </div>
                                             </div>
+                                            </Card>
+                                            
+                                        </div>
+                                    </Col>
+                                    <Col className="gutter-row" span={12}>
+                                        <div className='new-item flex'>
+                                            <div className='new-item-img'>
+                                                <img src={custom1} alt="" className='item-img'></img>
+                                            </div>
+                                            <Card
+                                                bordered={false}
+                                            >
+                                                <div className='new-item-content'>
+                                                <h4 className='font-semibold text-xl'>Gorgeous House For Sale</h4>
+                                                <div>
+                                                    <FontAwesomeIcon icon={faLocationDot} className='text-blue-500' />
+                                                    <span className='font-semibold ml-2'>70 Bright St New York, USA</span>
+                                                </div>
+                                                <div className='rate'>
+                                                    <Rate disabled allowHalf defaultValue={3.5} className='text-sm' />
+                                                    <FontAwesomeIcon icon={faTrashCan} className='icon-delete text-blue-500' />
+                                                </div>
+                                            </div>
+                                            </Card>
+                                            
                                         </div>
                                     </Col>
                                 </Row>

@@ -3,9 +3,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheck, faLocationDot, faUsers, faBed, faBath, faHome, faUserCheck, faPaperPlane } from '@fortawesome/free-solid-svg-icons';
 import { Rate } from 'antd';
 import { PhoneTwoTone, MailTwoTone, CreditCardTwoTone } from '@ant-design/icons';
-import MapLocation from '../../Map';
+import MapLocation from '../../components/Map';
 import { Col, Row, Card } from 'antd';
-import Banner from '../../banner';
+import Banner from '../../components/banner';
 import './ProductDetail.css';
 
 function ProductDetail() {

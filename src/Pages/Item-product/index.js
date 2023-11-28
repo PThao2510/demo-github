@@ -13,8 +13,8 @@ import './item-product.css'
 import { Link } from "react-router-dom";
 
 
-const product = require('../../../asset/img/Product/Forsale.jpg');
-const custom1 = require('../../../asset/img/custom/custom1.jpg')
+const product = require('../../asset/img/Product/Forsale.jpg');
+const custom1 = require('../../asset/img/custom/custom1.jpg')
 export default function ItemProduct(props) {
     const item = props.item;
     const link = '/product/1';

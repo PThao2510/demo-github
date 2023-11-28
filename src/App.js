@@ -2,8 +2,6 @@ import './App.css';
 import React, { useEffect, useState } from 'react';
 import Header from "./components/Layout/Header";
 import Footer from "./components/Layout/Footer";
-import Home from './components/Pages/Home';
-import Login from "./components/Login";
 import RoutersConfig from "./routes/RoutersConfig";
 import { useLocation } from 'react-router-dom'
 function App() {

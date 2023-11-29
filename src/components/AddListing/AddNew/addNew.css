@@ -89,3 +89,7 @@
     font-weight: 400;
     position: relative;
 }
+
+.ant-upload-wrapper .ant-upload.ant-upload-drag {
+    height: 250px;
+}

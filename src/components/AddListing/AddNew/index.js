@@ -1,14 +1,16 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { Col, Row, Tabs } from 'antd';
+import { Col, Row, Upload, message } from 'antd';
 import { faPowerOff } from '@fortawesome/free-solid-svg-icons';
-import { faStreetView,faCloudArrowUp, faList, faRightLong, faDownLong, faLocationPin, faMoneyBillWave, faPhoneFlip } from '@fortawesome/free-solid-svg-icons'
+import { faStreetView, faCloudArrowUp, faList, faRightLong, faDownLong, faLocationPin, faMoneyBillWave, faPhoneFlip } from '@fortawesome/free-solid-svg-icons'
 import { Link } from 'react-router-dom';
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons'
 import "./addNew.css";
+import { InboxOutlined } from '@ant-design/icons';
 import MapLocation from '../../Map';
 
 const custom1 = require('../../../asset/img/custom/custom1.jpg');
+const { Dragger } = Upload;
 
 function AddNew() {
   const location = {
@@ -16,6 +18,15 @@ function AddNew() {
     lat: 0,
     lng: 0,
   }
+  const props = {
+    name: 'file',
+    multiple: true,
+    onChange(info) {
+      
+    },
+    onDrop(e) {
+    },
+  };
   return (
     <div>
       <div className='dashboard-container'>
@@ -119,7 +130,7 @@ function AddNew() {
               </Col>
               <Col className="gutter-row" span={12}>
                 <div>
-                  <h5 className='pb-2'>Room Images</h5>
+                  {/* <h5 className='pb-2'>Room Images</h5>
                   <div className='listsearch'>
                     <form className='fuzone'>
                       <div className='fu-text'>
@@ -130,7 +141,13 @@ function AddNew() {
                       </div>
                       <input type ="file" multiple></input>
                     </form>
-                  </div>
+                  </div> */}
+                  <Dragger {...props}>
+                    <p className="ant-upload-drag-icon">
+                      <FontAwesomeIcon icon={faCloudArrowUp} className='text-blue-500 text-4xl' />
+                    </p>
+                    <p className="ant-upload-text">Click here or drop files to upload</p>
+                  </Dragger>
                 </div>
               </Col>
             </Row>

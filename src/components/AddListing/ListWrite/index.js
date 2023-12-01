@@ -35,7 +35,7 @@ export default function ListWrite() {
                             </div>
                         </div>
                         <div>
-                            <div className='list-items'>
+                            <div className='list-items pt-10'>
                                 <Row gutter={16}>
                                     <Col className="gutter-row" span={12}>
                                         <div className='new-item flex'>
@@ -88,7 +88,6 @@ export default function ListWrite() {
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
     );

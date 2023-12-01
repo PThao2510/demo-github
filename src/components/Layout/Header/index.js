@@ -59,8 +59,7 @@ export default function Header() {
             <div className=''>
                 <div className=" flex flex-wrap items-center justify-between mx-auto" >
                     <a href="#" className="flex items-center">
-                        <img src={logo} className="h-12 mr-3" />
-
+                        <Link to= "/"><img src={logo} className="h-12 mr-3" /></Link>
                     </a>
                     {/* <button className="button-header-search">
                         <SearchOutlined className='text-blue-600 font-extrabold mr-2 text-sm' />

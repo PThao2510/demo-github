@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Col, Row, Upload, message } from 'antd';
 import { faPowerOff } from '@fortawesome/free-solid-svg-icons';
@@ -6,13 +6,29 @@ import { faStreetView, faCloudArrowUp, faList, faRightLong, faDownLong, faLocati
 import { Link } from 'react-router-dom';
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons'
 import "./addNew.css";
+import { faBed, faBath, faWarehouse, faPeopleRoof, faMaximize } from '@fortawesome/free-solid-svg-icons'
 import { InboxOutlined } from '@ant-design/icons';
 import MapLocation from '../../Map';
+import { Select, Checkbox, Divider } from 'antd';
+
+
+const CheckboxGroup = Checkbox.Group;
+const plainOptions = ['Wifi', 'Nóng lạnh', 'Điều hòa'];
+const defaultCheckedList = ['Wifi', 'Nóng lạnh'];
 
 const custom1 = require('../../../asset/img/custom/custom1.jpg');
 const { Dragger } = Upload;
 
 function AddNew() {
+  const [checkedList, setCheckedList] = useState(defaultCheckedList);
+  const checkAll = plainOptions.length === checkedList.length;
+  const indeterminate = checkedList.length > 0 && checkedList.length < plainOptions.length;
+  const onChange = (list) => {
+    setCheckedList(list);
+  };
+  const onCheckAllChange = (e) => {
+    setCheckedList(e.target.checked ? plainOptions : []);
+  };
   const location = {
     address: '',
     lat: 0,
@@ -22,11 +38,12 @@ function AddNew() {
     name: 'file',
     multiple: true,
     onChange(info) {
-      
+
     },
     onDrop(e) {
     },
   };
+
   return (
     <div>
       <div className='dashboard-container'>
@@ -49,25 +66,25 @@ function AddNew() {
           </div>
           <div className='custom-form'>
             <Row gutter={16}>
-              <Col className="gutter-row" span={8}>
+              <Col className="gutter-row text-xs" span={8}>
                 <div>
-                  <h5 className='pb-2'>Địa chỉ</h5>
-                  <ul className='input-item'>
+                  <h5 className='pb-2 '>Địa chỉ</h5>
+                  <ul className='input-item '>
                     <FontAwesomeIcon icon={faLocationPin} className='p-4 text-blue-500' />
                     <input type='text' className='input-style' placeholder='   Địa Chỉ của bạn'></input>
                   </ul>
                 </div>
               </Col>
-              <Col className="gutter-row" span={8}>
+              <Col className="gutter-row text-xs" span={8}>
                 <div>
-                  <h5 className='pb-2'>Kinh độ</h5>
+                  <h5 className='pb-2 '>Kinh độ</h5>
                   <ul className='input-item'>
                     <FontAwesomeIcon icon={faRightLong} className='p-4 text-blue-500' />
                     <input type='text' className='input-style' placeholder='   Kinh độ trên Map'></input>
                   </ul>
                 </div>
               </Col>
-              <Col className="gutter-row" span={8}>
+              <Col className="gutter-row text-xs" span={8}>
                 <div>
                   <h5 className='pb-2'>Vĩ độ</h5>
                   <ul className='input-item'>
@@ -82,7 +99,7 @@ function AddNew() {
           <MapLocation location={location} zoomLevel={17} />
           <div className='custom-form'>
             <Row gutter={16} className='mt-8'>
-              <Col className="gutter-row" span={8}>
+              <Col className="gutter-row text-xs" span={8}>
                 <div>
                   <h5 className='pb-2'>Giá tiền</h5>
                   <ul className='input-item'>
@@ -91,7 +108,7 @@ function AddNew() {
                   </ul>
                 </div>
               </Col>
-              <Col className="gutter-row" span={8}>
+              <Col className="gutter-row text-xs" span={8}>
                 <div>
                   <h5 className='pb-2'>Số điện Thoại</h5>
                   <ul className='input-item'>
@@ -100,7 +117,7 @@ function AddNew() {
                   </ul>
                 </div>
               </Col>
-              <Col className="gutter-row" span={8}>
+              <Col className="gutter-row text-xs" span={8}>
                 <div>
                   <h5 className='pb-2'>Email</h5>
                   <ul className='input-item'>
@@ -120,28 +137,102 @@ function AddNew() {
           <div className='custom-form'>
             <Row gutter={16}>
               <Col className="gutter-row" span={12}>
-                {/* <div>
-                  <h5 className='pb-2'>Địa chỉ</h5>
-                  <ul className='input-item'>
-                    <FontAwesomeIcon icon={faLocationPin} className='p-4 text-blue-500' />
-                    <input type='text' className='input-style' placeholder='   Địa Chỉ của bạn' ></input>
-                  </ul>
-                </div> */}
+                <div>
+                  <div className='pb-5'>
+                    <h5 className='pb-2'>Tiêu đề</h5>
+                    <ul className='input-item'>
+                      <input type='text ' className='input-style' placeholder='   Nhập từ khóa'></input>
+                    </ul>
+                  </div>
+                </div>
+                <Row gutter={16}>
+                  <Col className="gutter-row text-xs" span={11}>
+                    <div>
+                      <div className='pb-10'>
+                        <h5 className='pb-2'>Số phòng</h5>
+                        <ul className='input-item'>
+                          <FontAwesomeIcon icon={faPeopleRoof} className='p-3 text-blue-500' />
+                          <input type='text ' className='input-style' placeholder='   Số phòng'></input>
+                        </ul>
+                      </div>
+
+                      <div className='pb-10'>
+                        <h5 className='pb-2'>Diện tích</h5>
+                        <ul className='input-item'>
+                          <FontAwesomeIcon icon={faMaximize} className='p-3 text-blue-500' />
+                          <input type='text ' className='input-style' placeholder='   Diện tích'></input>
+                        </ul>
+                      </div>
+
+                      <div className=' '>
+                        <h5 className='pb-2'>Phân loại</h5>
+                        <Select
+                          defaultValue="Chung cư"
+                          style={{
+                            width: 213,
+                          }}
+
+                          options={[
+                            {
+                              value: 'Chung cư',
+                              label: 'Chung cư',
+                            },
+                            {
+                              value: 'Phòng trọ',
+                              label: 'Phòng trọ',
+                            },
+                            {
+                              value: 'Nhà nguyên căn',
+                              label: 'Nhà nguyên căn',
+                            },
+                            {
+                              value: 'Ở ghép',
+                              label: 'Ở ghép',
+                            },
+                          ]}
+                        />
+                      </div>
+                    </div>
+                  </Col>
+                  <Col className="gutter-row" span={2}></Col>
+                  <Col className="gutter-row text-xs" span={11}>
+                    <div>
+                      <div className='pb-10'>
+                        <h5 className='pb-2'>Phòng ngủ</h5>
+                        <ul className='input-item'>
+                          <FontAwesomeIcon icon={faBed} className='p-3 text-blue-500' />
+                          <input type='text ' className='input-style' placeholder='   Số điện thoại của bạn'></input>
+                        </ul>
+                      </div>
+
+                      <div className='pb-10'>
+                        <h5 className='pb-2'>Phòng tắm</h5>
+                        <ul className='input-item'>
+                          <FontAwesomeIcon icon={faBath} className='p-3 text-blue-500' />
+                          <input type='text ' className='input-style' placeholder='   Số điện thoại của bạn'></input>
+                        </ul>
+                      </div>
+
+                      <div className='pb-10'>
+                        <h5 className='pb-2'>Chỗ để xe</h5>
+                        <ul className='input-item'>
+                          <FontAwesomeIcon icon={faWarehouse} className='p-3 text-blue-500' />
+                          <input type='text ' className='input-style' placeholder='   Số điện thoại của bạn'></input>
+                        </ul>
+                      </div>
+                    </div>
+                  </Col>
+                  <Col className="gutter-row" span={24}>
+                    <Checkbox indeterminate={indeterminate} onChange={onCheckAllChange} checked={checkAll}>
+                      Check all
+                    </Checkbox>
+                    <Divider />
+                    <CheckboxGroup options={plainOptions} value={checkedList} onChange={onChange} />
+                  </Col>
+                </Row>
               </Col>
               <Col className="gutter-row" span={12}>
                 <div>
-                  {/* <h5 className='pb-2'>Room Images</h5>
-                  <div className='listsearch'>
-                    <form className='fuzone'>
-                      <div className='fu-text'>
-                        <span>
-                         <FontAwesomeIcon icon={faCloudArrowUp} className='text-blue-500 text-4xl' />
-                          Click here or drop files to upload
-                        </span>
-                      </div>
-                      <input type ="file" multiple></input>
-                    </form>
-                  </div> */}
                   <Dragger {...props}>
                     <p className="ant-upload-drag-icon">
                       <FontAwesomeIcon icon={faCloudArrowUp} className='text-blue-500 text-4xl' />
@@ -149,10 +240,25 @@ function AddNew() {
                     <p className="ant-upload-text">Click here or drop files to upload</p>
                   </Dragger>
                 </div>
+                <div>
+                  <div className='pb-2 pt-6'>
+                    <h5 className='pb-2'>Chi tết căn phòng</h5>
+                    <ul className='input-item'>
+                      <input type='text ' className='input-text' placeholder='   Mô tả của bạn'></input>
+                    </ul>
+                  </div>
+                </div>
               </Col>
             </Row>
           </div>
         </div>
+        <button className='btn-save'>
+          <Link to="/" className='mt-0 flex items-center'>
+            <span className=" text-sm font-semibold">
+              Đăng bài
+            </span>
+          </Link>
+        </button>
       </div>
     </div>
   );

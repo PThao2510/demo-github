@@ -16,8 +16,6 @@ function MapLocation(props) {
     const zoomLevel = props.zoomLevel;
     return (
         <div className="map">
-            <h2 className="map-h2">Come Visit Us At Our Campus</h2>
-
             <div className="google-map">
                 <GoogleMapReact
                     bootstrapURLKeys={{ key: '' }}

@@ -2,6 +2,7 @@ import React from 'react';
 import { Input, Checkbox } from 'antd';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser, faLock } from '@fortawesome/free-solid-svg-icons';
+import { Link } from 'react-router-dom';
 import './Login.css';
 
 export default function Login() {
@@ -26,7 +27,9 @@ export default function Login() {
             <span>Lost Your Password?</span>
           </a>
         </div>
-        <button className="btn-login" type="submit">Login</button>
+        <Link to='/' >
+          <button className="btn-login" type="submit">Login</button>
+        </Link>
       </form>
     </div>
   );

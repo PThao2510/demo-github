@@ -16,7 +16,7 @@ function Register() {
                     <Input className='input' placeholder="Your Name" prefix={<FontAwesomeIcon icon={faUser} />} />
                 </div>
                 <div className="user-box">
-                    <label className='title'>User Name or Email
+                    <label className='title'>Email
                         <span style={{ color: 'red' }}> *</span>
                     </label>
                     <Input className='input' placeholder="Your User Name or Email" prefix={<FontAwesomeIcon icon={faEnvelope} />} />

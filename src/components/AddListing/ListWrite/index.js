@@ -8,6 +8,7 @@ import { Link } from 'react-router-dom';
 import './listwrite.css'
 
 const custom1 = require('../../../asset/img/custom/custom1.jpg');
+const product = require('../../../asset/img/Product/Forsale.jpg');
 
 export default function ListWrite() {
     return (
@@ -40,7 +41,7 @@ export default function ListWrite() {
                                     <Col className="gutter-row" span={12}>
                                         <div className='new-item flex'>
                                             <div className='new-item-img'>
-                                                <img src={custom1} alt="" className='item-img'></img>
+                                                <img src={product} alt="" className='item-img'></img>
                                             </div>
                                             <Card
                                                 bordered={false}
@@ -63,7 +64,7 @@ export default function ListWrite() {
                                     <Col className="gutter-row" span={12}>
                                         <div className='new-item flex'>
                                             <div className='new-item-img'>
-                                                <img src={custom1} alt="" className='item-img'></img>
+                                                <img src={product} alt="" className='item-img'></img>
                                             </div>
                                             <Card
                                                 bordered={false}
@@ -80,7 +81,6 @@ export default function ListWrite() {
                                                 </div>
                                             </div>
                                             </Card>
-                                            
                                         </div>
                                     </Col>
                                 </Row>

@@ -5,6 +5,7 @@ import { Tabs } from 'antd';
 import "./addlisting.css"
 import AddNew from "./AddNew";
 import ListWrite from './ListWrite';
+import Profile from './Profile';
 
 
 const items = [
@@ -27,6 +28,16 @@ const items = [
       </span>
     ),
     children: <ListWrite/>,
+  },
+  {
+    key: '3',
+    label: (
+      <span>
+        <FontAwesomeIcon icon={faUserPen}  className='pr-2 text-blue-600' />
+        Thông tin cá nhân
+      </span>
+    ),
+    children: <Profile/>,
   },
   
 ];

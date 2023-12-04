@@ -56,7 +56,8 @@
 }
 .input-style{
     width: 100%;
-    background-color: #F5F7FB;   
+    background-color: #F5F7FB;  
+    color: #000; 
 }
 .input-style:focus{
     /* /* border: 1px solid #FFF;

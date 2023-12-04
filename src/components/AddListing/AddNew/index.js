@@ -231,7 +231,7 @@ function AddNew() {
                   </Col>
                 </Row>
               </Col>
-              <Col className="gutter-row" span={12}>
+              <Col className="gutter-row mt-7" span={12}>
                 <div>
                   <Dragger {...props}>
                     <p className="ant-upload-drag-icon">

@@ -15,7 +15,6 @@ function Banner(props) {
             <Carousel afterChange={onChange} autoplay autoplaySpeed={3000}>
                 <div>
                     <div className='banner'>
-
                         <div className='overlay'></div>
                         <div className='header'>
                             <h1 className='header-name'>

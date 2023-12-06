@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { Col, Row, Upload, message } from 'antd';
+import { Col, Row, Upload, Input } from 'antd';
 import { faPowerOff } from '@fortawesome/free-solid-svg-icons';
 import { faStreetView, faCloudArrowUp, faList, faRightLong, faDownLong, faLocationPin, faMoneyBillWave, faPhoneFlip } from '@fortawesome/free-solid-svg-icons'
 import { Link } from 'react-router-dom';
@@ -18,9 +18,17 @@ const defaultCheckedList = ['Wifi', 'Nóng lạnh'];
 
 const custom1 = require('../../../asset/img/custom/custom1.jpg');
 const { Dragger } = Upload;
-
+// address: '',
+//     lat: 0,
+//     lng: 0,
 function AddNew() {
   const [checkedList, setCheckedList] = useState(defaultCheckedList);
+  const [location, setLocation] = useState({
+    address: '',
+    lat: -34.397, 
+    lng: 150.644 
+  });
+  const [coordsLoaded, setCoordsLoaded] = useState(false);
   const checkAll = plainOptions.length === checkedList.length;
   const indeterminate = checkedList.length > 0 && checkedList.length < plainOptions.length;
   const onChange = (list) => {
@@ -29,11 +37,26 @@ function AddNew() {
   const onCheckAllChange = (e) => {
     setCheckedList(e.target.checked ? plainOptions : []);
   };
-  const location = {
-    address: '',
-    lat: 0,
-    lng: 0,
+  const conChangeViDo = (e) => {
+    var newObject = {...location, lat: e.target.value}
+    setLocation(newObject);
+    if(location.lng != undefined || location.lat != undefined) {
+      setCoordsLoaded(true);
+    }
+  } 
+
+  const conChangeAddress = (e)=> {
+    var newObject = {...location, lat: e.target.value}
+    setLocation(newObject);
   }
+
+  const conChangeKinhDo = (e) => {
+    var newObject = {...location, address: e.target.value}
+    setLocation(newObject);
+    if(location.lng != undefined || location.lat != undefined) {
+      setCoordsLoaded(true);
+    }
+  } 
   const props = {
     name: 'file',
     multiple: true,
@@ -71,7 +94,7 @@ function AddNew() {
                   <h5 className='pb-2 '>Địa chỉ</h5>
                   <ul className='input-item '>
                     <FontAwesomeIcon icon={faLocationPin} className='p-4 text-blue-500' />
-                    <input type='text' className='input-style' placeholder='   Địa Chỉ của bạn'></input>
+                    <Input onChange={(e) => conChangeAddress(e)} type='text' className='input-style' placeholder='   Địa Chỉ của bạn'></Input>
                   </ul>
                 </div>
               </Col>
@@ -80,7 +103,7 @@ function AddNew() {
                   <h5 className='pb-2 '>Kinh độ</h5>
                   <ul className='input-item'>
                     <FontAwesomeIcon icon={faRightLong} className='p-4 text-blue-500' />
-                    <input type='text' className='input-style' placeholder='   Kinh độ trên Map'></input>
+                    <Input  onChange={(e) => conChangeKinhDo(e)} type='text' className='input-style' placeholder='Kinh độ trên Map'></Input>
                   </ul>
                 </div>
               </Col>
@@ -89,14 +112,14 @@ function AddNew() {
                   <h5 className='pb-2'>Vĩ độ</h5>
                   <ul className='input-item'>
                     <FontAwesomeIcon icon={faDownLong} className='p-4 text-blue-500' />
-                    <input type='text' className='input-style' placeholder='  Vĩ độ trên Map ' ></input>
+                    <Input type='text'  onChange={(e) => conChangeViDo(e)} className='input-style' placeholder='  Vĩ độ trên Map ' ></Input>
                   </ul>
                 </div>
               </Col>
             </Row>
           </div>
           {/* map */}
-          <MapLocation location={location} zoomLevel={17} />
+          {coordsLoaded && <MapLocation location={location} zoomLevel={17} /> }
           <div className='custom-form'>
             <Row gutter={16} className='mt-8'>
               <Col className="gutter-row text-xs" span={8}>

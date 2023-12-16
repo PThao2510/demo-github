@@ -9,7 +9,8 @@ import "./addNew.css";
 import { faBed, faBath, faWarehouse, faPeopleRoof, faMaximize } from '@fortawesome/free-solid-svg-icons'
 import { InboxOutlined } from '@ant-design/icons';
 import MapLocation from '../../Map';
-import { Select, Checkbox, Divider } from 'antd';
+import { Select, Checkbox, Divider, Modal } from 'antd';
+import Pay from '../../Pay';
 
 
 const CheckboxGroup = Checkbox.Group;
@@ -25,12 +26,20 @@ function AddNew() {
   const [checkedList, setCheckedList] = useState(defaultCheckedList);
   const [location, setLocation] = useState({
     address: '',
-    lat: -34.397, 
-    lng: 150.644 
+    lat: -34.397,
+    lng: 150.644
   });
   const [coordsLoaded, setCoordsLoaded] = useState(false);
   const checkAll = plainOptions.length === checkedList.length;
   const indeterminate = checkedList.length > 0 && checkedList.length < plainOptions.length;
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const showModal = () => {
+    setIsModalOpen(true);
+  };
+  const handleCancel = () => {
+    setIsModalOpen(false);
+  };
   const onChange = (list) => {
     setCheckedList(list);
   };
@@ -38,25 +47,25 @@ function AddNew() {
     setCheckedList(e.target.checked ? plainOptions : []);
   };
   const conChangeViDo = (e) => {
-    var newObject = {...location, lat: e.target.value}
+    var newObject = { ...location, lat: e.target.value }
     setLocation(newObject);
-    if(location.lng != undefined || location.lat != undefined) {
+    if (location.lng != undefined || location.lat != undefined) {
       setCoordsLoaded(true);
     }
-  } 
+  }
 
-  const conChangeAddress = (e)=> {
-    var newObject = {...location, lat: e.target.value}
+  const conChangeAddress = (e) => {
+    var newObject = { ...location, lat: e.target.value }
     setLocation(newObject);
   }
 
   const conChangeKinhDo = (e) => {
-    var newObject = {...location, address: e.target.value}
+    var newObject = { ...location, address: e.target.value }
     setLocation(newObject);
-    if(location.lng != undefined || location.lat != undefined) {
+    if (location.lng != undefined || location.lat != undefined) {
       setCoordsLoaded(true);
     }
-  } 
+  }
   const props = {
     name: 'file',
     multiple: true,
@@ -103,7 +112,7 @@ function AddNew() {
                   <h5 className='pb-2 '>Kinh độ</h5>
                   <ul className='input-item'>
                     <FontAwesomeIcon icon={faRightLong} className='p-4 text-blue-500' />
-                    <Input  onChange={(e) => conChangeKinhDo(e)} type='text' className='input-style' placeholder='Kinh độ trên Map'></Input>
+                    <Input onChange={(e) => conChangeKinhDo(e)} type='text' className='input-style' placeholder='Kinh độ trên Map'></Input>
                   </ul>
                 </div>
               </Col>
@@ -112,14 +121,14 @@ function AddNew() {
                   <h5 className='pb-2'>Vĩ độ</h5>
                   <ul className='input-item'>
                     <FontAwesomeIcon icon={faDownLong} className='p-4 text-blue-500' />
-                    <Input type='text'  onChange={(e) => conChangeViDo(e)} className='input-style' placeholder='  Vĩ độ trên Map ' ></Input>
+                    <Input type='text' onChange={(e) => conChangeViDo(e)} className='input-style' placeholder='  Vĩ độ trên Map ' ></Input>
                   </ul>
                 </div>
               </Col>
             </Row>
           </div>
           {/* map */}
-          {coordsLoaded && <MapLocation location={location} zoomLevel={17} /> }
+          {coordsLoaded && <MapLocation location={location} zoomLevel={17} />}
           <div className='custom-form'>
             <Row gutter={16} className='mt-8'>
               <Col className="gutter-row text-xs" span={8}>
@@ -275,13 +284,14 @@ function AddNew() {
             </Row>
           </div>
         </div>
-        <button className='btn-save'>
-          <Link to="/" className='mt-0 flex items-center'>
-            <span className=" text-sm font-semibold">
-              Đăng bài
-            </span>
-          </Link>
+        <button onClick={showModal} className='btn-save'>
+          <span className=" text-sm font-semibold">
+            Đăng bài
+          </span>
         </button>
+        <Modal title="" open={isModalOpen} footer={null} onCancel={handleCancel} width={700}>
+          <Pay />
+        </Modal>
       </div>
     </div>
   );

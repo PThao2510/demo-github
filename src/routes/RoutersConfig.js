@@ -3,6 +3,7 @@ import { Route, Routes } from "react-router-dom";
 import Home from "../Pages/Home";
 import ProductDetail from "../Pages/product-detail";
 import AddListing from '../components/AddListing';
+import Pay from '../components/Pay';
 
 
 
@@ -16,6 +17,10 @@ function RoutersConfig() {
             <Route
                 path="/addlisting"
                 element={<AddListing />}
+            />
+             <Route
+                path="/pay"
+                element={<Pay />}
             />
             <Route
                 exact
